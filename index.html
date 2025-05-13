@@ -91,7 +91,6 @@
       margin-top: 20px;
     }
 
-    /* Cloud Animation */
     .cloud {
       position: absolute;
       top: 50px;
@@ -112,6 +111,70 @@
     @keyframes cloudMove {
       0% { left: -200px; }
       100% { left: 100%; }
+    }
+
+    .rainbow-blink {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      animation: rainbow 2s linear infinite, blink 1s infinite;
+      text-shadow: 0 0 5px #fff, 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+
+    @keyframes rainbow {
+      0% { color: red; }
+      14% { color: orange; }
+      28% { color: yellow; }
+      42% { color: green; }
+      57% { color: blue; }
+      71% { color: indigo; }
+      85% { color: violet; }
+      100% { color: red; }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Typing effect */
+    .typing-effect {
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      overflow: hidden;
+      border-right: .15em solid #fff;
+      white-space: nowrap;
+      margin: 0 auto;
+      animation: typing 4s steps(30) 1s 1 normal both, blinkCaret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 20em; }
+    }
+
+    @keyframes blinkCaret {
+      50% { border-color: transparent; }
+    }
+
+    .facebook-link {
+      margin-top: 20px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .facebook-link a {
+      color: #fff;
+      font-size: 18px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .facebook-link a:hover {
+      color: #007bff;
     }
 
     @media (max-width: 400px) {
@@ -138,6 +201,14 @@
 
     <div class="weather" id="weatherResult"></div>
     <div class="error" id="errorMsg"></div>
+  </div>
+
+  <!-- Typing Effect for Name -->
+  <div class="typing-effect">Designed by Masud Rana</div>
+
+  <!-- Facebook Link -->
+  <div class="facebook-link">
+    <a href="https://www.facebook.com/masud.rana" target="_blank">Visit my Facebook</a>
   </div>
 
   <script>
