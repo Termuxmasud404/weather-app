@@ -75,7 +75,7 @@
       font-size: 16px;
       border-radius: 5px;
       cursor: pointer;
-      margin-left: 10px;
+      margin: 10px 5px 0 5px;
     }
 
     button:hover {
@@ -132,6 +132,7 @@
     <h2>Weather App</h2>
     <input type="text" id="city" placeholder="Enter city name">
     <button onclick="getWeather()">Search</button>
+    <button onclick="getLocationWeather()">My Location</button>
     <div class="result" id="result"></div>
   </div>
 
@@ -141,11 +142,11 @@
   <a href="https://www.facebook.com/profile.php?id=100078423821878" target="_blank" class="facebook-btn">Visit My Facebook</a>
 
   <script>
+    const apiKey = '8532deafe8556bebd77170d973bad66f';
+    const result = document.getElementById('result');
+
     async function getWeather() {
       const city = document.getElementById('city').value;
-      const result = document.getElementById('result');
-      const apiKey = '8532deafe8556bebd77170d973bad66f';
-
       if (!city) {
         result.innerHTML = '<p>Please enter a city name</p>';
         return;
@@ -156,19 +157,43 @@
       try {
         const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`);
         const data = await res.json();
-
-        if (data.cod === 200) {
-          result.innerHTML = `
-            <h3>${data.name}, ${data.sys.country}</h3>
-            <p>Temperature: ${data.main.temp}°C</p>
-            <p>Weather: ${data.weather[0].main}</p>
-            <p>Humidity: ${data.main.humidity}%</p>
-          `;
-        } else {
-          result.innerHTML = `<p>${data.message}</p>`;
-        }
+        showWeather(data);
       } catch (error) {
-        result.innerHTML = '<p>Something went wrong. Please try again.</p>';
+        result.innerHTML = '<p>Something went wrong.</p>';
+      }
+    }
+
+    async function getLocationWeather() {
+      if (navigator.geolocation) {
+        result.innerHTML = '<p>Getting your location...</p>';
+        navigator.geolocation.getCurrentPosition(async (position) => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          try {
+            const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`);
+            const data = await res.json();
+            showWeather(data);
+          } catch (error) {
+            result.innerHTML = '<p>Something went wrong.</p>';
+          }
+        }, () => {
+          result.innerHTML = '<p>Unable to get location permission.</p>';
+        });
+      } else {
+        result.innerHTML = '<p>Geolocation not supported.</p>';
+      }
+    }
+
+    function showWeather(data) {
+      if (data.cod === 200) {
+        result.innerHTML = `
+          <h3>${data.name}, ${data.sys.country}</h3>
+          <p>Temperature: ${data.main.temp}°C</p>
+          <p>Weather: ${data.weather[0].main}</p>
+          <p>Humidity: ${data.main.humidity}%</p>
+        `;
+      } else {
+        result.innerHTML = `<p>${data.message}</p>`;
       }
     }
   </script>
