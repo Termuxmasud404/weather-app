@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Dream Chaser - Weather App</title>
   <style>
     * {
@@ -13,7 +13,9 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: url('your-image.png') no-repeat center center/cover;
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
       min-height: 100vh;
       color: white;
       display: flex;
@@ -23,15 +25,22 @@
       padding-top: 40px;
     }
 
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
     .logo {
-      font-size: 40px;
+      font-size: 42px;
       font-weight: bold;
       background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
       background-size: 300%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: colorShift 5s linear infinite;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      text-align: center;
     }
 
     @keyframes colorShift {
@@ -40,10 +49,10 @@
     }
 
     .weather-app {
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.5);
       padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
       text-align: center;
       max-width: 400px;
       width: 90%;
@@ -99,18 +108,19 @@
     .facebook-btn {
       margin-top: 25px;
       background: linear-gradient(45deg, #4267B2, #29487d);
-      padding: 12px 24px;
+      padding: 12px 30px;
       color: white;
       border: none;
       border-radius: 50px;
       font-size: 16px;
       cursor: pointer;
       text-decoration: none;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .facebook-btn:hover {
       transform: scale(1.05);
+      box-shadow: 0 0 10px #29487d;
     }
   </style>
 </head>
@@ -128,7 +138,7 @@
   <div class="designed-by">Designed by</div>
   <div class="masud-rana">Masud Rana</div>
 
-  <a href="https://www.facebook.com/your-facebook" target="_blank" class="facebook-btn">Visit My Facebook</a>
+  <a href="https://www.facebook.com/profile.php?id=100078423821878" target="_blank" class="facebook-btn">Visit My Facebook</a>
 
   <script>
     async function getWeather() {
@@ -162,5 +172,6 @@
       }
     }
   </script>
+
 </body>
 </html>
