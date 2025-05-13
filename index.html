@@ -94,7 +94,7 @@
     .cloud {
       position: absolute;
       top: 50px;
-      background: url('https://i.ibb.co/FbNgWXx/cloud.png') no-repeat;
+      background: url('https://cdn.pixabay.com/photo/2017/08/30/03/32/clouds-2693969_960_720.jpg') no-repeat;
       background-size: contain;
       width: 150px;
       height: 80px;
@@ -177,6 +177,18 @@
       color: #007bff;
     }
 
+    /* Colorful Name Styling */
+    .name {
+      font-size: 36px;
+      font-weight: bold;
+      color: #fff;
+      background: -webkit-linear-gradient(left, #ff0080, #ff8c00, #ffd700, #008000, #0000ff, #8a2be2, #ff1493);
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: rainbow 4s linear infinite;
+      text-align: center;
+    }
+
     @media (max-width: 400px) {
       .card {
         padding: 20px;
@@ -193,7 +205,7 @@
   <div class="cloud"></div>
   <div class="cloud cloud2"></div>
 
-  <h1>Weather App</h1>
+  <h1>The Dream Chaser</h1>
 
   <div class="card">
     <input type="text" id="cityInput" placeholder="Enter city name">
@@ -205,6 +217,9 @@
 
   <!-- Typing Effect for Name -->
   <div class="typing-effect">Designed by Masud Rana</div>
+
+  <!-- Colorful Masud Rana -->
+  <div class="name">Masud Rana</div>
 
   <!-- Facebook Link -->
   <div class="facebook-link">
