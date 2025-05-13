@@ -18,15 +18,19 @@
     }
 
     h1 {
-      color: #fff;
-      text-shadow: 2px 2px 4px #000;
+      font-size: 48px;
+      font-weight: bold;
       margin-bottom: 20px;
-      animation: slideDown 1s ease-out;
+      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbowText 8s linear infinite;
     }
 
-    @keyframes slideDown {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    @keyframes rainbowText {
+      0% { background-position: 0% }
+      100% { background-position: 400% }
     }
 
     .card {
@@ -113,80 +117,35 @@
       100% { left: 100%; }
     }
 
-    .rainbow-blink {
-      margin-top: 20px;
-      font-size: 20px;
-      font-weight: bold;
-      text-align: center;
-      animation: rainbow 2s linear infinite, blink 1s infinite;
-      text-shadow: 0 0 5px #fff, 0 0 10px #0ff, 0 0 20px #0ff;
-    }
-
-    @keyframes rainbow {
-      0% { color: red; }
-      14% { color: orange; }
-      28% { color: yellow; }
-      42% { color: green; }
-      57% { color: blue; }
-      71% { color: indigo; }
-      85% { color: violet; }
-      100% { color: red; }
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    /* Typing effect */
-    .typing-effect {
+    .designed-by {
+      margin-top: 25px;
       font-size: 20px;
       font-weight: bold;
       color: white;
-      overflow: hidden;
-      border-right: .15em solid #fff;
-      white-space: nowrap;
-      margin: 0 auto;
-      animation: typing 4s steps(30) 1s 1 normal both, blinkCaret 0.75s step-end infinite;
+      text-shadow: 1px 1px 4px #000;
     }
 
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 20em; }
-    }
-
-    @keyframes blinkCaret {
-      50% { border-color: transparent; }
-    }
-
+    /* Facebook Button Style */
     .facebook-link {
       margin-top: 20px;
-      font-size: 18px;
-      text-align: center;
     }
 
     .facebook-link a {
-      color: #fff;
-      font-size: 18px;
-      text-decoration: none;
+      padding: 12px 25px;
+      font-size: 16px;
       font-weight: bold;
-      transition: color 0.3s ease;
+      background: linear-gradient(45deg, #4267B2, #29487d);
+      color: #fff;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 15px rgba(66, 103, 178, 0.4);
+      display: inline-block;
     }
 
     .facebook-link a:hover {
-      color: #007bff;
-    }
-
-    /* Colorful Name Styling */
-    .name {
-      font-size: 36px;
-      font-weight: bold;
-      color: #fff;
-      background: -webkit-linear-gradient(left, #ff0080, #ff8c00, #ffd700, #008000, #0000ff, #8a2be2, #ff1493);
-      -webkit-background-clip: text;
-      background-clip: text;
-      animation: rainbow 4s linear infinite;
-      text-align: center;
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(66, 103, 178, 0.6);
     }
 
     @media (max-width: 400px) {
@@ -201,29 +160,26 @@
 </head>
 <body>
 
-  <!-- Cloud Animations -->
   <div class="cloud"></div>
   <div class="cloud cloud2"></div>
 
+  <!-- Logo -->
   <h1>The Dream Chaser</h1>
 
+  <!-- Main Card -->
   <div class="card">
     <input type="text" id="cityInput" placeholder="Enter city name">
     <button onclick="getWeather()">Search</button>
-
     <div class="weather" id="weatherResult"></div>
     <div class="error" id="errorMsg"></div>
   </div>
 
-  <!-- Typing Effect for Name -->
-  <div class="typing-effect">Designed by Masud Rana</div>
+  <!-- Designed By Text -->
+  <div class="designed-by">Designed by</div>
 
-  <!-- Colorful Masud Rana -->
-  <div class="name">Masud Rana</div>
-
-  <!-- Facebook Link -->
+  <!-- Facebook Button -->
   <div class="facebook-link">
-    <a href="https://www.facebook.com/masud.rana" target="_blank">Visit my Facebook</a>
+    <a href="https://www.facebook.com/masud.rana" target="_blank">Visit My Facebook</a>
   </div>
 
   <script>
